@@ -1,0 +1,75 @@
+{
+    "timestamp": 1467835313083,
+    "stream": [
+        {
+            "timestamp": 1467835313078,
+            "level": "ERROR",
+            "id": "General",
+            "ch": null,
+            "msg": "Failed to set bot avatar"
+        },
+        {
+            "timestamp": 1467835313091,
+            "level": "INFO",
+            "id": "General",
+            "ch": null,
+            "msg": "Server 激战 joined"
+        },
+        {
+            "timestamp": 1467835313143,
+            "level": "INFO",
+            "id": "General",
+            "ch": null,
+            "msg": "Started 应答器 v3.4-M"
+        },
+        {
+            "timestamp": 1467835313158,
+            "level": "INFO",
+            "id": "General",
+            "ch": null,
+            "msg": "Opened web interface on 127.0.0.1, server port 8080"
+        },
+        {
+            "timestamp": 1467835501581,
+            "level": "INFO",
+            "id": "193286224390258688",
+            "ch": "193289018136330243",
+            "msg": "Treating '@应答器#1985 8ball' from towyc as a command"
+        },
+        {
+            "timestamp": 1467835501582,
+            "level": "WARN",
+            "id": "193286224390258688",
+            "ch": "193289018136330243",
+            "msg": "No parameters provided for 8ball command"
+        },
+        {
+            "timestamp": 1467835549269,
+            "level": "INFO",
+            "id": "193286224390258688",
+            "ch": "193289018136330243",
+            "msg": "Treating '@应答器#1985  chatterbot' from towyc as a chatterbot prompt"
+        },
+        {
+            "timestamp": 1467835555810,
+            "level": "INFO",
+            "id": "193286224390258688",
+            "ch": "193289018136330243",
+            "msg": "Treating '@应答器#1985  chatterbot' from towyc as a chatterbot prompt"
+        },
+        {
+            "timestamp": 1467835685635,
+            "level": "INFO",
+            "id": "193286224390258688",
+            "ch": "193289018136330243",
+            "msg": "Treating '@应答器#1985 meme' from towyc as a command"
+        },
+        {
+            "timestamp": 1467835685636,
+            "level": "WARN",
+            "id": "193286224390258688",
+            "ch": "193289018136330243",
+            "msg": "towyc did not provide proper syntax for meme"
+        }
+    ]
+}

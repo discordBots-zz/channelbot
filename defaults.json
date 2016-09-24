@@ -1,0 +1,506 @@
+{
+    "default": {
+        "admins": [],
+        "blocked": [],
+        "translated": {
+            "list": [],
+            "langs": [],
+            "channels": []
+        },
+        "newgreeting": "",
+        "rmgreeting": "",
+        "rss": [
+            true,
+            [
+                "https://news.google.com/news?ned=us&topic=h&output=rss"
+            ],
+            [
+                "gnews"
+            ],
+            [
+                [
+                    [],
+                    ""
+                ]
+            ]
+        ],
+        "tags": {
+            "shrug": "¯\\\\\\_(ツ)\\_/¯",
+            "lenny": "( ͡° ͜ʖ ͡°)",
+            "raiseyourdongers": "ヽ༼ຈل͜ຈ༽ﾉ Raise Your Dongers ヽ༼ຈل͜ຈ༽ﾉ",
+            "praisehelix": "つ ◕_◕ ༽つ PRAISE HELIX༼つ ◕_◕ ༽つ",
+            "goodshit": "👌👀👌👀👌👀👌👀👌👀 good shit go౦ԁ sHit👌 thats ✔ some good👌👌shit right👌👌there👌👌👌 right✔there ✔✔if i do ƽaү so my self 💯 i say so 💯 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ💯 👌👌 👌НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ👌 👌👌 👌 💯 👌 👀 👀 👀 👌👌Good shit",
+            "creepylenny": "┬┴┬┴┤ ͜ʖ ͡°) ├┬┴┬┴",
+            "kawaii": "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+            "yeeaah": "(•_•) ( •_•)>⌐■-■ (⌐■_■)",
+            "lod": "ಠ_ಠ",
+            "orly": "﴾͡๏̯͡๏﴿ O'RLY?",
+            "ayy": "(☞ﾟ∀ﾟ)☞",
+            "gib": "༼ つ ◕_◕ ༽つ",
+            "kawaiidog": "(ᵔᴥᵔ)",
+            "fite": "(ง'̀-'́)ง",
+            "kawaiimeh": " ╮ (. ❛ ᴗ ❛.) ╭",
+            "evilsmiley": "“ψ(｀∇´)ψ",
+            "rip": "(✖╭╮✖)",
+            "wink": "ಠ‿↼"
+        },
+        "motd": [
+            "",
+            86400,
+            "",
+            ""
+        ],
+        "tagcommands": [],
+        "listing": {
+            "enabled": false,
+            "description": "",
+            "invite": ""
+        },
+        "listsrc": [],
+        "triviasets": {},
+        "extensions": {},
+        "cmdtag": "tag",
+        "newmembermsg": [
+            false,
+            [
+                "++ Welcome to our little corner of hell!",
+                "++ has joined the server.",
+                "++ You're gonna have a jolly good time here!",
+                "++ is new here.", "++ is here, everybody!",
+                "++ sends his/her regards.", "++, welcome to the server!",
+                "++ is our next victim...",
+                "Hello ++!",
+                "Please welcome our newest member, ++"
+            ],
+            null
+        ],
+        "newmemberpm": false,
+        "newrole": [],
+        "onmembermsg": [
+            false,
+            [
+                "++ is now online!",
+                "Welcome back ++!"
+            ],
+            null
+        ],
+        "offmembermsg": [
+            false,
+            [
+                "++ is gone (for now)",
+                "++ has gone offline."
+            ],
+            null
+        ],
+        "changemembermsg": [
+            false,
+            null
+        ],
+        "twitchmembermsg": [
+            false,
+            null
+        ],
+        "rankmembermsg": [
+            false,
+            null,
+            false
+        ],
+        "editmembermsg": [
+            false,
+            []
+        ],
+        "deletemembermsg": [
+            false,
+            []
+        ],
+        "rmmembermsg": [
+            false,
+            [
+                "++ has left us :(",
+                "Goodbye ++",
+                "++ Come back!",
+                "++ is gone *cries*",
+                "++ has left the server",
+                "RIP ++",
+                "Uh-oh, ++ went away",
+                "Please convince ++ to come back!"
+            ],
+            null
+        ],
+        "banmembermsg": [
+            false,
+            [
+                "++ has been banned"
+            ],
+            null
+        ],
+        "unbanmembermsg": [
+            false,
+            [
+                "++ has been unbanned"
+            ],
+            null
+        ],
+        "muted": {},
+        "join": true,
+        "filter": [
+            [],
+            "mute",
+            "",
+            false
+        ],
+        "customkeys": {
+            "google_api_key": "",
+            "custom_search_id": ""
+        },
+        "autoprune": [
+            false,
+            172800
+        ],
+        "usenicks": true,
+        "usediscriminators": false,
+        "cooldown": 0,
+        "maxcount": 5,
+        "admincommands": [
+            "ban",
+            "kick",
+            "list",
+            "nuke",
+            "quiet",
+            "cool",
+            "strikes"
+        ],
+        "chrestrict": {},
+        "quiet": true,
+        "rankslist": [
+            {
+                "name": "Pro Lurker",
+                "max": 1,
+                "role": null
+            },
+            {
+                "name": "Learning Lurker",
+                "max": 5,
+                "role": null
+            },
+            {
+                "name": "Bad Lurker",
+                "max": 10,
+                "role": null
+            },
+            {
+                "name": "Mostly Inactive",
+                "max": 20,
+                "role": null
+            },
+            {
+                "name": "In Between",
+                "max": 40,
+                "role": null
+            },
+            {
+                "name": "Kinda Active",
+                "max": 50,
+                "role": null
+            },
+            {
+                "name": "Pretty Active",
+                "max": 70,
+                "role": null
+            },
+            {
+                "name": "Super Active",
+                "max": 100,
+                "role": null
+            },
+            {
+                "name": "Pro Member",
+                "max": 150,
+                "role": null
+            },
+            {
+                "name": "Almost a Spammer",
+                "max": 200,
+                "role": null
+            }
+        ],
+        "countdowns": {},
+        "showsvr": true,
+        "lockedtags": [],
+        "addtagadmin": false,
+        "addtagcommandadmin": true,
+        "removetagadmin": false,
+        "removetagcommandadmin": true,
+        "deletecommands": false,
+        "statsexclude": [],
+        "voicetext": []
+    },
+    "full": {
+        "servermod": true,
+        "kick": true,
+        "ban": true,
+        "nuke": true,
+        "archive": true,
+        "spamfilter": [
+            true,
+            [],
+            5,
+            "mute",
+            "",
+            false
+        ],
+        "nsfwfilter": [
+            true,
+            [],
+            "block",
+            "",
+            false
+        ],
+        "customroles": [
+            true,
+            [],
+            true
+        ],
+        "customcolors": true,
+        "anime": true,
+        "manga": true,
+        "meme": true,
+        "urban": true,
+        "choose": true,
+        "tag": true,
+        "info": true,
+        "stats": true,
+        "points": true,
+        "ranks": true,
+        "messages": true,
+        "avatar": true,
+        "lottery": true,
+        "linkme": true,
+        "appstore": true,
+        "say": true,
+        "convert": true,
+        "twitter": true,
+        "imdb": true,
+        "youtube": true,
+        "image": true,
+        "gif": true,
+        "wolfram": true,
+        "wiki": true,
+        "weather": true,
+        "stock": true,
+        "reddit": true,
+        "roll": true,
+        "games": true,
+        "profile": true,
+        "role": true,
+        "tagreaction": true,
+        "poll": true,
+        "giveaway": true,
+        "trivia": true,
+        "search": true,
+        "ddg": true,
+        "afk": true,
+        "joke": true,
+        "translate": true,
+        "shorten": true,
+        "emoji": true,
+        "time": true,
+        "countdown": true,
+        "calc": true,
+        "list": true,
+        "room": true,
+        "chatterbot": true,
+        "showpub": true,
+        "defaultcount": 5,
+        "8ball": true,
+        "fortune": true,
+        "catfact": true,
+        "numfact": true,
+        "e621": false,
+        "rule34": false,
+        "safebooru": false,
+        "xkcd": true,
+        "imgur": true,
+        "cat": true,
+        "alert": true,
+        "pokedex": true,
+        "cool": true,
+        "strikes": true
+    },
+    "lite": {
+        "servermod": true,
+        "kick": true,
+        "ban": true,
+        "nuke": true,
+        "archive": true,
+        "spamfilter": [
+            false,
+            [],
+            5,
+            true
+        ],
+        "nsfwfilter": [
+            true,
+            [],
+            true
+        ],
+        "customroles": [
+            false,
+            [],
+            true
+        ],
+        "customcolors": false,
+        "tag": false,
+        "info": true,
+        "meme": false,
+        "anime": false,
+        "manga": false,
+        "urban": false,
+        "choose": false,
+        "stats": false,
+        "points": false,
+        "ranks": false,
+        "messages": false,
+        "avatar": false,
+        "lottery": false,
+        "linkme": false,
+        "appstore": false,
+        "say": false,
+        "convert": false,
+        "twitter": false,
+        "imdb": false,
+        "youtube": true,
+        "image": true,
+        "gif": true,
+        "wolfram": false,
+        "wiki": false,
+        "weather": false,
+        "stock": false,
+        "reddit": true,
+        "roll": false,
+        "games": false,
+        "profile": false,
+        "role": false,
+        "tagreaction": false,
+        "poll": true,
+        "giveaway": false,
+        "trivia": false,
+        "search": false,
+        "ddg": false,
+        "afk": false,
+        "joke": false,
+        "translate": false,
+        "shorten": false,
+        "emoji": false,
+        "time": true,
+        "countdown": false,
+        "calc": false,
+        "list": false,
+        "room": false,
+        "chatterbot": false,
+        "showpub": false,
+        "defaultcount": 1,
+        "8ball": false,
+        "fortune": false,
+        "catfact": false,
+        "numfact": false,
+        "e621": false,
+        "rule34": false,
+        "safebooru": false,
+        "xkcd": false,
+        "imgur": false,
+        "cat": true,
+        "alert": false,
+        "pokedex": false,
+        "cool": false,
+        "strikes": false
+    },
+    "sense": {
+        "servermod": true,
+        "kick": true,
+        "ban": true,
+        "nuke": true,
+        "archive": true,
+        "spamfilter": [
+            true,
+            [],
+            5,
+            true
+        ],
+        "nsfwfilter": [
+            true,
+            [],
+            true
+        ],
+        "customroles": [
+            false,
+            [],
+            true
+        ],
+        "customcolors": true,
+        "tag": true,
+        "info": true,
+        "meme": false,
+        "anime": false,
+        "manga": true,
+        "urban": true,
+        "choose": false,
+        "stats": true,
+        "points": true,
+        "ranks": true,
+        "messages": true,
+        "avatar": true,
+        "lottery": false,
+        "linkme": true,
+        "appstore": true,
+        "say": true,
+        "convert": true,
+        "twitter": false,
+        "imdb": false,
+        "youtube": true,
+        "image": true,
+        "gif": true,
+        "wolfram": true,
+        "wiki": true,
+        "weather": true,
+        "stock": false,
+        "reddit": true,
+        "roll": false,
+        "games": true,
+        "profile": true,
+        "role": false,
+        "tagreaction": false,
+        "poll": true,
+        "giveaway": false,
+        "trivia": true,
+        "search": true,
+        "ddg": false,
+        "afk": true,
+        "joke": false,
+        "translate": true,
+        "shorten": false,
+        "emoji": false,
+        "time": true,
+        "countdown": false,
+        "calc": false,
+        "list": false,
+        "room": true,
+        "chatterbot": true,
+        "showpub": false,
+        "defaultcount": 3,
+        "8ball": false,
+        "fortune": false,
+        "catfact": false,
+        "numfact": false,
+        "e621": false,
+        "rule34": false,
+        "safebooru": false,
+        "xkcd": false,
+        "imgur": false,
+        "cat": true,
+        "alert": true,
+        "pokedex": false,
+        "cool": true,
+        "strikes": false
+    }  
+}

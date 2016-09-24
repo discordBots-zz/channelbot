@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AwesomeBot: the best Discord bot!">
+    <meta name="author" content="BitQuote">
+    <title>Maintainer Console</title>
+    
+    <link id="theme" href="./css/bootstrap-default.min.css" rel="stylesheet">
+    <link href="./css/simple-sidebar.css" rel="stylesheet">
+    <link href="./css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="./css/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/nprogress.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap-select.min.js"></script>
+    <script src="./js/nprogress.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/maintainer.js"></script>
+</head>
+<body onload="switchColors();doAuth();">
+    <div id="wrapper" class="">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="javascript:goToSection();">
+                        Maintainer Console
+                    </a>
+                </li>
+                <li id="commandusage-entry">
+                    <a href="javascript:goToSection('commandusage')">Command Usage</a>
+                </li>
+                <li id="servers-entry">
+                    <a href="javascript:goToSection('servers')">Servers</a>
+                </li>
+                <li id="botblocked-entry">
+                    <a href="javascript:goToSection('botblocked')">Global Blocklist</a>
+                </li>
+                <li id="files-entry">
+                    <a href="javascript:goToSection('files')">Data Files</a>
+                </li>
+                <li id="bigmessage-entry">
+                    <a href="javascript:goToSection('bigmessage')">BigMessage&trade;</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Page Content -->
+        <div id="header" ondblclick="loadBackground();" style="background-color:#000000;background-repeat:none;background-attachment:scroll;background-position:center center;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover;color:#fff !important;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <a style="position:fixed;z-index:1000;box-shadow: 0 0 5px #333;" href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+                    </div>
+                    <div class="col-xs-10" style="text-align:right;">
+                        <select id="themeswitcher" class="selectpicker show-tick" data-width="fit" onChange="javascript:switchColors(this.value);">
+                            <option id="theme-default" value="default">Default</option>
+                            <option id="theme-cyborg" value="cyborg">Cyborg</option>
+                            <option id="theme-paper" value="paper">Paper</option>
+                            <option id="theme-slate" value="slate">Slate</option>
+                            <option id="theme-superhero" value="superhero">Superhero</option>
+                        </select>&nbsp;
+                        <a target="_blank" href="https://github.com/BitQuote/AwesomeBot/wiki/Configuration#maintainer-console" class="btn btn-default" id="help-button" data-toggle="tooltip" data-placement="bottom" title="Maintainer console wiki page"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a>&nbsp;
+                        <a href="#menu-toggle" class="btn btn-primary" id="logout-button" data-toggle="modal" data-target="#logout-modal"><span class="glyphicon glyphicon-question-log-out" aria-hidden="true"></span> Logout</a>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-9">
+                        <h1 id="overview">
+                            <span id="botname" onclick="javascript:configUsername();">BotName</span>
+                            <select id="statusswitcher" class="selectpicker show-tick" data-width="fit" onChange="javascript:configStatus(this.value);">
+                                <option id="status-online" value="online">Online</option>
+                                <option id="status-idle" value="idle">Idle</option>
+                            </select>
+                        </h1>
+                        <h4>
+                            <span id="botgame" onclick="javascript:configGame();">BotGame</span>
+                            &nbsp;
+                            <button type="button" id="botgamedefault" class="btn btn-default btn-sm" onclick="javascript:config('game', 'default', function(){configGame(true)});" data-toggle="tooltip" data-placement="bottom" title="Cycles through bot info/stats"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Default</button>
+                            <button type="button" id="botgameremove" class="btn btn-danger btn-sm" onclick="javascript:config('game', '.', function(){configGame(true)});" data-toggle="tooltip" data-placement="bottom" title="Bot will not be playing a game"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
+                        </h4>
+                    </div>
+                    <div class="col-xs-3">
+                        <br>
+                        <img id="profilepic" style="float:right;" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="100" height="100" class="img-responsive img-circle" alt="Bot Avatar">
+                        <div id="profilepic-popover-header" class="hide">
+                            <button type="button" class="close" id="profilepic-popover-header-close" onclick="$('#profilepic').popover('hide');" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">Bot Avatar Image</h4>
+                        </div>
+                        <div id="profilepic-popover-content" class="hide">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="profilepicinput" onkeydown="if(event.keyCode==13){configAvatar();}" placeholder="Image URL">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" onclick="configAvatar();" type="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Set</button>
+                                </span>
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-content-wrapper" class="header">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-default btn-lg" id="back-button" onclick="javascript:goToSection();" style="display:none;"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to Overview</button>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="section-head" id="commandusage" data-toggle="collapse" data-target="#commandusage-body" aria-expanded="false" aria-controls="collapsecommandusage">Command Usage</h2>
+                        <div id="commandusage-body" class="collapse">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="section-head" id="servers" data-toggle="collapse" data-target="#servers-body" aria-expanded="false" aria-controls="collapseservers">Servers <span id="servers-badge" class="badge"></span></h2>
+                        <div id="servers-body" class="collapse">
+                            <div class="table-responsive">
+                                <div id="servertable" class="bodycontainer scrollable" style="max-height: 500px;width: 100%;margin: 0;overflow-y: auto;">
+                                    <table class="table table-striped table-scrollable">
+                                        <thead>
+                                            <tr>
+                                                <th>Icon</th>
+                                                <th>Name</th>
+                                                <th>ID</th>
+                                                <th>Owner</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="servertablebody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <a role="button" target="_blank" id="addserverlink" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Authenticate with Discord"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Join A Server</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="section-head" id="botblocked" data-toggle="collapse" data-target="#botblocked-body" aria-expanded="false" aria-controls="botblockedservers">Global Blocklist</h2>
+                        <div id="botblocked-body" class="collapse">
+                            <p class="help-block">Globally blocked users will not be able to use the bot <i>anywhere</i>. Other bots will be automatically added to this list.</p>
+                            <div class="table-responsive">
+                                <table id="botblockedtable" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Avatar</th>
+                                            <th>Username</th>
+                                            <th>ID</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="botblockedtablebody"></tbody>
+                                </table>
+                            </div>
+                            <select id="botblockedselector" class="selectpicker show-tick" data-width="fit" data-live-search="true" title="Select User to Block" onChange="javascript:config('botblocked', this.value, switchBotBlocked);"></select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="section-head" id="files" data-toggle="collapse" data-target="#files-body" aria-expanded="false" aria-controls="collapsefiles">Data Files</h2>
+                        <div id="files-body" class="collapse">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#files-stats" aria-controls="home" role="tab" data-toggle="tab">stats.json</a></li>
+                                <li role="presentation"><a href="#files-config" aria-controls="profile" role="tab" data-toggle="tab">config.json</a></li>
+                                <li role="presentation"><a href="#files-profiles" aria-controls="messages" role="tab" data-toggle="tab">profiles.json</a></li>
+                                <li role="presentation"><a href="#files-logs" aria-controls="settings" role="tab" data-toggle="tab">logs.json</a></li>
+                                <li role="presentation"><a href="#files-reminders" aria-controls="settings" role="tab" data-toggle="tab">reminders.json</a></li>
+                                <li role="presentation"><a href="#files-polls" aria-controls="settings" role="tab" data-toggle="tab">polls.json</a></li>
+                                <li role="presentation"><a href="#files-giveaways" aria-controls="settings" role="tab" data-toggle="tab">giveaways.json</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="files-stats">
+                                    <br>
+                                    This file is the heart of the built-in stats system, storing the number of messages, gameplay data, and last seen time for each member of each server. <code>stats.json</code> also includes a log of when users have been mentioned and the per-user PM mentions configuration.
+                                    <br><br>
+                                    <a class="btn btn-default" onclick="getFile('stats');" role="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download stats.json</a>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="files-config">
+                                    <br>
+                                    All server configs are stored in this file, including commmand toggles and the admin/blocked lists. In addition, some basic bot info is stored here such as the game and maintainer ID.
+                                    <br><br>
+                                    <a class="btn btn-default" onclick="getFile('config');" role="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download config.json</a>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="files-profiles">
+                                    <br>
+                                    <code>profiles.json</code> contains mostly point totals for each member (independent of server) as well as any custom profile fields they have added.
+                                    <br><br>
+                                    <form class="form-inline" id="profilesform">
+                                        <a class="btn btn-default" onclick="getFile('profiles');" role="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download profiles.json</a>
+                                        &nbsp;
+                                        <div id="profilesselector-block" style="display:inline-block;">
+                                            <select id="profilesselector" class="selectpicker show-tick" data-width="fit" data-live-search="true" title="Edit Points for Member" onchange="configProfiles(this.value);"></select>
+                                        </div>
+                                        <div id="profilesinput-block" style="display:inline-block;">
+                                            <input type="number" id="profilesinput" class="form-control">
+                                        </div>
+                                        <input type="submit" class="btn btn-default" value="Set">
+                                    </form>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="files-logs">
+                                    <br>
+                                    The log file is very large, storing each and every log entry in the past week. It's there for debugging and recording purposes in case you want to know what happened with the bot a few days ago but it had restarted in between.
+                                    <br><br>
+                                    <a class="btn btn-default" onclick="getFile('logs');" role="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download logs.json</a>
+                                    <a class="btn btn-default" onclick="config('clearlogs', true, function() {richModal('Cleared all bot logs', 'Info');});" role="button"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Clear logs</a>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="files-reminders">
+                                    <br>
+                                    <code>reminders.json</code> is usually empty. It contains ongoing reminders set by users, but they are deleted once the reminder is delivered. If this file does contain anything when you download it, it's probably a reminder set to be delivered in multiple days.
+                                    <br><br>
+                                    <a class="btn btn-default" onclick="getFile('reminders');" role="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download reminders.json</a>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="files-polls">
+                                    <br>
+                                    This file stores data for ongoing polls, such as the list of options and responses. If the bot crashes or goes down while the poll is still active, the poll will be able to resume when it comes back online.
+                                    <br><br>
+                                    <a class="btn btn-default" onclick="getFile('polls');" role="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download polls.json</a>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="files-giveaways">
+                                    <br>
+                                    <code>giveaways.json</code> serves a similar purpose to <code>reminders.json</code> and <code>polls.json</code>. It stores data for ongoing giveaways to prevent them from being lost.
+                                    <br><br>
+                                    <a class="btn btn-default" onclick="getFile('giveaways');" role="button"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download giveaways.json</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="section-head" id="bigmessage" data-toggle="collapse" data-target="#bigmessage-body" aria-expanded="false" aria-controls="collapsebigmessage">BigMessage&trade;</h2>
+                        <div id="bigmessage-body" class="collapse">
+                            <form>
+                                <div class="input-group">
+                                    <textarea id="bigmessageinput" class="form-control custom-control" rows="3" style="resize:none" placeholder="Message sent to all servers, in markdown"></textarea>
+                                    <span class="input-group-addon btn btn-primary" onclick="javascript:newBigmessage();"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send</span>
+                                </div>
+                            </form>
+                            <div class="checkbox">
+                                <input id="pmforward" type="checkbox" onclick="javascript:config('pmforward', this.checked, switchBigmessage);">
+                                <label for="pmforward">
+                                    Forward PMs to me <span class="label label-info newlabel">New</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <br><i>Created by @BitQuote, <a href="http://awesomebot.xyz">http://awesomebot.xyz</a>. This project is in no way affiliated with Alphabet, Inc., who does not own or endorse this product.</i> Themes provided by <a href="https://bootswatch.com/">Bootswatch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Logout Modal -->
+        <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-labelledby="logout">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Logout</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to logout?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" onclick="doLogout();">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Extender Modal -->
+        <div class="modal fade" id="extender-modal" tabindex="-1" role="dialog" aria-labelledby="extender">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Session</h4>
+                    </div>
+                    <div class="modal-body">
+                        It's been nearly 5 minutes. Would you like to extend your session?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" onclick="checkAuth(true);">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Error Modal -->
+        <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="error">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 id="error-modal-header" class="modal-title">Error</h4>
+                    </div>
+                    <div id="error-modal-body" class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    $(document).ready(function(){
+        $('a[href^="#"]').click(function(e) {
+            e.preventDefault();
+            if(this.hash!="#menu-toggle") {
+                var target = this.hash, $target = $(target);
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 900, 'swing', function() {
+                    window.location.hash = target;
+                });
+            }
+        });
+    });
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $(function() {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+    $(function() {
+        $('[data-toggle="popover"]').popover();
+    });
+    $("#profilepic").popover({ 
+        html: true,
+        title: function() {
+            return $("#profilepic-popover-header").html();
+        },
+        content: function() {
+            return $("#profilepic-popover-content").html();
+        },
+        placement: "left",
+        container: "body",
+        trigger: "click"
+    });
+    $("#profilesform").submit(function() {
+        configProfiles();
+        return false;
+    });
+    </script>
+</body>
+</html>

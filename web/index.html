@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AwesomeBot: the best Discord bot!">
+    <meta name="author" content="BitQuote">
+    <title>Bot Info</title>
+
+    <link id="theme" href="./css/bootstrap-default.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="./css/navbar-fixed-top.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/nprogress.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+    :root #content > #right > .dose > .dosesingle,
+    :root #content > #center > .dose > .dosesingle {
+        display: none !important;
+    }
+    body {
+        position: relative;
+    }
+    #console {
+        max-height: 400px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    #servertable {
+        max-height: 500px;
+        width: 100%; 
+        margin: 0; 
+        overflow-y: auto;
+    }
+    </style>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap-select.min.js"></script>
+    <script src="./js/nprogress.js"></script>
+    <script src="./js/micromarkdown.min.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+<body onload="switchColors();doSetup();" data-spy="scroll" data-target="#navbar">
+    <!-- Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" style="font-family:Montserrat,'Helvetica Neue',Helvetica,Arial">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="float:left;margin-left:10px;">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" style="padding-left:0px">Bot Info</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#servers"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Servers</a>
+                    </li>
+                    <li>
+                        <a href="#stats"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Stats</a>
+                    </li>
+                    <li>
+                        <a href="#activity"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Activity</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a id="addserverlink" target="_blank" href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add To Server</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> Theme <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a id="theme-default" href="javascript:switchColors('default');">Default</a></li>
+                            <li><a id="theme-cyborg" href="javascript:switchColors('cyborg');">Cyborg</a></li>
+                            <li><a id="theme-paper" href="javascript:switchColors('paper');">Paper</a></li>
+                            <li><a id="theme-slate" href="javascript:switchColors('slate');">Slate</a></li>
+                            <li><a id="theme-superhero" href="javascript:switchColors('superhero');">Superhero</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="nav-auth" href="#"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Config</a>
+                        <div id="nav-auth-popover-content" class="hide">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="nav-authinput" onkeydown="if(event.keyCode==13){checkAuth(this.value);}" placeholder="Auth code">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" onclick="checkAuth($('.popover-content').find('#nav-authinput').val());" type="button">Go</button>
+                                </span>
+                                </input>
+                            </div>
+                            <script type="text/javascript">
+                            document.getElementById("nav-authinput").focus();
+                            </script>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div id="header" ondblclick="loadBackground();"><center>
+        <br><br><br>
+        <img alt="Icon" id="profilepic" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive img-circle">
+        <h1 id="botname" style="color:white;">
+            BotName
+        </h1>
+    </center></div>
+
+    <!-- Page Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 id="servers">Servers <span id="servers-badge" class="badge"></span></h2>
+                <div id="servers-body">
+                    <p class="help-block col-xs-9" style="margin-left: -15px;">Some servers excluded for privacy. Message count is only for the past 24 hours. <span class="label label-info newlabel">New</span></p>
+                    <div class="input-group col-xs-3">
+                        <input type="text" id="server-search" class="form-control" onkeydown="if(event.keyCode==13){switchServers('messages', this.value);}" style="min-width:200px;" placeholder="Search">
+                        <span class="input-group-addon btn btn-primary" onclick="switchServers('messages', document.getElementById('server-search').value);"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <div id="servertable" class="bodycontainer scrollable">
+                            <table class="table table-striped table-scrollable">
+                                <thead>
+                                    <tr>
+                                        <th onclick="switchServers('svrnm', null);">Name</th>
+                                        <th onclick="switchServers('messages', null);">Messages</th>
+                                        <th onclick="switchServers('members', null);">Members</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servertablebody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 id="stats">Stats</h2>
+                <select id="statsselect" class="selectpicker show-tick" data-width="fit" data-live-search="true" onChange="javascript:switchStats(this.value);">
+                    <option value="null" selected>General</option>
+                </select>
+                &nbsp;
+                <select style="visibility: hidden;" id="profileselect" class="selectpicker show-tick" data-width="fit" data-live-search="true" title="View Profile" onChange="javascript:switchProfile(this.value);">
+                </select>
+                <br><br>
+                <div id="stats-body">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 id="activity">Activity Log</h2>
+                <select id="idselector" class="selectpicker show-tick" data-live-search="true" data-width="fit" onChange="javascript:switchLogID(this.value);">
+                    <option id="id-null" value="null">All</option>
+                </select>
+                &nbsp;
+                <select id="levelselector" class="selectpicker show-tick" data-width="fit" onChange="javascript:switchLogLevel(this.value);">
+                    <option id="level-null" value="null">All</option>
+                    <option id="level-INFO" value="INFO">Info</option>>
+                    <option id="level-WARN" value="WARN">Warning</option>
+                    <option id="level-ERROR" value="ERROR">Error</option>
+                </select>
+                <button class="btn btn-default" onclick="javascript:switchLog(false);" type="button" style="float:right;"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+                <br><br>
+                <div id="activity-body">
+                    <pre id="console"></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <br><i>Created by @BitQuote, <a href="http://awesomebot.xyz">http://awesomebot.xyz</a>. This project is in no way affiliated with Alphabet, Inc., who does not own or endorse this product.</i> Themes provided by <a href="https://bootswatch.com/">Bootswatch</a><br><br>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Error Modal -->
+    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="error">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 id="error-modal-header" class="modal-title">Error</h4>
+                </div>
+                <div id="error-modal-body" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    $(document).ready(function(){
+        $('a[href^="#"]').click(function(e) {
+            e.preventDefault();
+            if(this.hash!="#navbar") {
+                var target = this.hash, $target = $(target);
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top - 60
+                }, 900, 'swing', function() {
+                    window.location.hash = target;
+                });
+            }
+        });
+    });
+    $("#nav-auth").popover({ 
+        html: true,
+        content: function() {
+            return $("#nav-auth-popover-content").html();
+        },
+        placement: "bottom",
+        container: "body",
+        trigger: "click"
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{
+    "timestamp": 1467835313081,
+    "193286224390258688": {
+        "members": {
+            "190958302744543232": {
+                "messages": 5,
+                "voice": 0,
+                "rank": "Pro Lurker",
+                "rankscore": 0,
+                "active": 1467835685634,
+                "seen": 1467835313114,
+                "mentions": {
+                    "pm": false,
+                    "stream": []
+                },
+                "strikes": []
+            },
+            "191713296968056832": {
+                "messages": 0,
+                "voice": 0,
+                "rank": "Pro Lurker",
+                "rankscore": 0,
+                "active": 1467835313114,
+                "seen": 1467835313114,
+                "mentions": {
+                    "pm": false,
+                    "stream": []
+                },
+                "strikes": []
+            },
+            "194252246957948928": {
+                "messages": 0,
+                "voice": 0,
+                "rank": "Pro Lurker",
+                "rankscore": 0,
+                "active": 1467835313114,
+                "seen": 1467835313114,
+                "mentions": {
+                    "pm": false,
+                    "stream": []
+                },
+                "strikes": []
+            },
+            "197542173040705536": {
+                "messages": 0,
+                "voice": 0,
+                "rank": "Pro Lurker",
+                "rankscore": 0,
+                "active": 1467835313114,
+                "seen": 1467835313114,
+                "mentions": {
+                    "pm": false,
+                    "stream": []
+                },
+                "strikes": []
+            },
+            "198993829855100928": {
+                "messages": 0,
+                "voice": 0,
+                "rank": "Pro Lurker",
+                "rankscore": 0,
+                "active": 1467835313114,
+                "seen": 1467835817375,
+                "mentions": {
+                    "pm": false,
+                    "stream": []
+                },
+                "strikes": []
+            },
+            "199734762112417803": {
+                "messages": 0,
+                "voice": 0,
+                "rank": "Pro Lurker",
+                "rankscore": 0,
+                "active": 1467835313114,
+                "seen": 1467835313114,
+                "mentions": {
+                    "pm": false,
+                    "stream": []
+                },
+                "strikes": []
+            }
+        },
+        "games": {
+            "Guild Wars": 2.600000000000001
+        },
+        "commands": {
+            "8ball": 1,
+            "meme": 1
+        },
+        "botOn": {
+            "193286224390258688": true,
+            "193286224390258689": true,
+            "193286672153182208": true,
+            "193286694793904128": true,
+            "193286716054831104": true,
+            "193286732613943298": true,
+            "193286768123052032": true,
+            "193286784938016768": true,
+            "193289018136330243": true
+        },
+        "cools": {},
+        "trivia": {}
+    }
+}
